@@ -1,0 +1,20 @@
+package testException;
+
+public class TableauAccent {
+	
+	public void traitementAccent(String[] tableau){
+		for (int i = 0; i < tableau.length; i++) {
+			tableau[i] = tableau[i].replace('é', 'e');
+			System.out.println(tableau[i]);
+		}
+		System.out.println("fin traitement des accents");
+	}
+	
+	public static void main(String[] args) {
+		TableauAccent traitementTableau = new TableauAccent();
+		String[] tableau = new String[3];
+		tableau[0] = new String("égale");
+		tableau[1] = new String("étoile");
+		traitementTableau.traitementAccent(tableau);
+	}
+}

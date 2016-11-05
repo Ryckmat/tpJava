@@ -1,0 +1,9 @@
+package testException;
+
+public class DonneIncorrecte {
+
+	public DonneIncorrecte() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

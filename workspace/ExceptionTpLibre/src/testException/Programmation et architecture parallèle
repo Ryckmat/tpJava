@@ -1,0 +1,314 @@
+/*Programmation et architecture parallèle 
+rochange@irit.fr
+
+
+5 cours td et 4 tp
+
+Introduction au archi parrallèle:
+
+l'idée de faire du parrallele est lié que tous est parrallèle
+Exemple : planets , galaxies.
+l'objectifs est la communication pour éviter la désyncronisation
+Pour gagner du temps !
+Exemple : chaine de montage.
+
+Voire le poly à partir de la page 5
+
+Note de la page 9
+
+Memoire partager 
+Espace d'adressa unique
+memoire sinder en deux
+acces mémoire accessible par les deux processeur 
+
+Memoire distrivué 
+espaces d'adressages privés
+chaque processeur à sa mémoire en privé
+
+pour le partage réelle de la mémoire il faudra passé par des méssages
+(à voire dans la 3e partie)*/
+
+#define SIZE 1024
+unsigned char image[SIZE * SIZE] = {/*Initialisation*/};
+unsigned char negatif[SIZE * SIZE];
+
+int main(int argc, char const *argv[])
+	#pragma omp parrallel num_threads(1)
+{
+	#pragma omp for
+	for (int i = 0; i < SIZE*SIZE; ++i)
+	{
+		negatif[i] = 255 - image[i];
+	}
+	return 0;
+}
+
+
+#define SIZE 1024
+unsigned char image[SIZE][SIZE] = {{/*Initialisation*/};};
+unsigned char negatif[SIZE][SIZE];
+
+int main(int argc, char const *argv[])
+	#pragma omp parrallel num_threads(2)
+{
+	#pragma omp parrallel for
+	for (int i = 0; i < SIZE; ++i)
+	{
+		#pragma omp for
+		for (int j = 0; i < SIZE; ++j)
+		{
+			negatif[i][j] = 255 - image[i][j];
+		}
+	}
+	return 0;
+}
+
+//Exercice 2
+
+#define N 35
+
+int main(int argc, char const *argv[])
+	#pragma omp parrallel num_threads(2)
+{
+	
+	int V[N];
+	
+	for (int i = 0; i < N; ++i)
+		#pragma omp parrallel for
+	{
+		if (i<2)
+		{
+			V[i] =1;
+		}
+		else{
+			V[i] = V[i-1] + V[i-2];
+		}
+	}
+	return 0;
+}
+
+// FAUX car on peut pas parraliser car l'ordre du sheduleur n'est pas déterminer ce qui provoquera des erreurs de calcule
+
+
+//Exercie 3
+
+#define N 35
+
+int main(int argc, char const *argv[])
+{
+	#pragma omp parrallel
+	#pragma omp for
+	for (int k= 0; k < N; ++i)
+	{
+		for (int i = 0; i < N; ++i)
+		{
+			for (int j = 0; j < N; ++j)
+			{
+				C[K][i]= A[k][j] * B[j][i];
+			}
+		}
+	}
+	
+	return 0;
+}
+
+//Exercice 4
+
+#define N 2050
+float T[N] ={100.0, }
+float tmp[N];
+tmp[0] = T[0] ; tmp[N-1] = T[N-1];
+#pragma omp parrallel
+for (int t = 0; i < TMAX; ++t)
+	#pragma omp for
+{
+	for (int s = 1; s < N-1; ++S)
+	{
+		tmp[s] = T[s];
+	}
+	#pragma omp for
+	for (int s = 1; s < N-1; ++S)
+	{
+		T[s] = (tmp[s-1] + 4*tmp[s] + tmp[s+1])/6;	
+	}
+}
+
+//Feuille 2 Exercice2
+/* Q1 max locaux 
+un thread cherche le max dans max locaux
+chaque thread compare son max local au max global
+max globl section critique */
+
+int max = 0;
+int max_local[MAX_THDS]
+#pragma omp parrallel
+{
+	int m = omp.get.thread.num();
+	max_local[m]=0;
+	#pragma omp for
+	for (int i = 0; i < N; ++i)
+	{
+		if(v[i] > max_local[n]) max_local[m]=V[i]
+	}
+	#pragma omp single
+	{
+		int nim = omp_get.num.thd();
+		for (int i = 0; i < num; ++i)
+		{
+			if(max_local[j] > max) max = max_local[j];
+		}
+	}
+}
+
+#pragma omp parrallel
+{
+	#pragma omp for
+	for (int i = 0; i < N; ++i)
+	{
+		#pragma omp critical
+		{
+			if (V[i]> max)
+			{
+				max = V[i];
+			}
+		}
+	}
+}
+
+#pragma omp parrallel 
+{ 
+	#pragma omp for reduction(max:max)
+	for (int i = 0; i < N; ++i)
+	{
+		#pragma omp atomic
+		{
+			if (V[i]> max)
+			{
+				max = V[i];
+			}
+		}
+	}
+}
+
+
+
+int max = 0;
+int max_local[MAX_THDS]
+#pragma omp parrallel
+{
+	int m = omp.get.thread.num();
+	max_local[m]=0;
+	#pragma omp for
+	for (int i = 0; i < N; ++i)
+	{
+		if(v[i] > max_local[n]) max_local[m]=V[i]
+	}
+	#pragma omp single
+	{
+		int nim = omp_get.num.thd();
+		for (int i = 0; i < num; ++i)
+		{
+			#pragma omp critical
+			if(max_local[j] > max) max = max_local[j];
+		}
+	}
+}
+
+
+
+int max = 0;
+#pragma omp parrallel
+{
+	int max_local=0;
+	#pragma omp for
+	for (int i = 0; i < N; ++i)
+	{
+		if(v[i] > max_local) max_local=V[i]
+	}
+	#pragma omp single
+	{
+		int nim = omp_get.num.thd();
+		for (int i = 0; i < num; ++i)
+		{
+			if(max_local > max) max = max_local;
+		}
+	}
+}
+
+
+//Feuille 3
+//Exercice 1
+
+int num_pric = 0;
+#pragma omp for reduction(+:num_pric)
+for (int i = 0; i < N; ++i)
+{
+	bool is_prime = TRUE;
+	for (int j = 2; j < i; ++j)
+	{
+		if (i%j == 0)
+			{
+				is_prime = FALSE;
+				break;
+			}	
+	}
+	
+	if (is_prime)
+	{
+		#pragma omp atomic
+		num_pric++;
+	}
+}
+
+
+float A[N+2][N+2], diff=0;
+int main(int argc, char const *argv[])
+{
+	read(n);
+	Initialisation(A);
+	calcule(A);
+	return 0;
+}
+
+void calcule(float **A){
+	char fini=0;
+	float diff=0, temp;
+	while(!fini){
+		diff =0;
+		for (int i = 0; i < N; ++i)
+		{
+			for (int i = 0; i < count; ++i)
+			{
+				temp = A[i][j];
+				
+			}
+		}
+	}
+}
+
+
+#pragma omp parallel for
+for (int i = 0; i < count; ++i)
+{
+	if (/* condition */)
+	{
+		#pragma omp critical
+		{
+			max[nb]=tab[i]
+			nb++;
+		}
+		
+	}
+}
+
+//Feuille 5
+//Cache de données
+
+
+
+
+
+
+
+
+

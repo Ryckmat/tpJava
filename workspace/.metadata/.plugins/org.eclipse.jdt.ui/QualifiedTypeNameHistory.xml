@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="moteurJeu.EnumNomBateau"/>
+<fullyQualifiedTypeName name="moteurJeu.Bateau"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="jeuRole.EntiteLivre"/>
+<fullyQualifiedTypeName name="livre.Livre"/>
+<fullyQualifiedTypeName name="livre.Ecran"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ListIterator"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="objet.TypeInstruments"/>
+<fullyQualifiedTypeName name="village.Gaulois"/>
+<fullyQualifiedTypeName name="java.util.NavigableSet"/>
+<fullyQualifiedTypeName name="java.util.TreeSet"/>
+<fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+</qualifiedTypeNameHistroy>

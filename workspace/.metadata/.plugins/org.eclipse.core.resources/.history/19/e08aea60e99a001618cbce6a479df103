@@ -1,0 +1,84 @@
+package village;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.NavigableSet;
+import java.util.TreeSet;
+
+
+
+public class Village{
+
+	private ArrayList<Gaulois> v;
+	
+	public Village(Gaulois chef, Gaulois villageois) {
+		
+		if(chef.getStatus() == EnumStatut.CHEF){
+			this.v = new ArrayList<Gaulois>();
+			v.add(chef);
+			v.add(villageois);
+		}
+		
+	}
+	
+	public NavigableSet<Gaulois> getGauloisAge(){
+		NavigableSet<Gaulois> ns = new TreeSet<Gaulois>(v);;
+		
+		for(Iterator<Gaulois> it= v.iterator();it.hasNext();){
+			ns.add(it.next());
+		}
+		
+		return ns;
+		
+	}
+	
+	public void addGaulois(Gaulois g){
+		v.add(g);
+	}
+	
+	
+	
+	public static void main(String args){
+		Gaulois asterix = new Gaulois("Astérix", new Date(29, 10, 1986),
+			    EnumGenre.HOMME, EnumStatut.VILLAGEOIS);
+			  Gaulois obelix = new Gaulois("Obélix", new Date(29, 10, 1986),
+			    EnumGenre.HOMME, EnumStatut.VILLAGEOIS);
+			  Gaulois bonemine = new Gaulois("Bonemine", new Date(19, 02, 1985),
+			    EnumGenre.FEMME, EnumStatut.VILLAGEOIS);
+			  Gaulois abraracourcix = new Gaulois("Abraracourcix", new Date(5, 01,
+			    1980), EnumGenre.HOMME, EnumStatut.CHEF);
+			  Gaulois panoramix = new Gaulois("Panoramix", new Date(25, 12, 1946),
+			    EnumGenre.HOMME, EnumStatut.DRUIDE);
+			  Gaulois assurancetourix = new Gaulois("Assurancetourix", new Date(12,
+			    9, 1988), EnumGenre.HOMME, EnumStatut.BARDE);
+			  Gaulois cetautomatix = new Gaulois("Cétautomatix",
+			    new Date(30, 7, 1982), EnumGenre.HOMME, EnumStatut.VILLAGEOIS);
+			  Gaulois agecanonix = new Gaulois("Agecanonix", new Date(21, 06, 1938),
+			    EnumGenre.HOMME, EnumStatut.ANCIEN);
+			  Gaulois ordralfabetix = new Gaulois("Ordralfabétix", new Date(8, 11,
+			    1981), EnumGenre.HOMME, EnumStatut.VILLAGEOIS);
+			  Gaulois falbala = new Gaulois("Falbala", new Date(2, 5, 1992),
+			    EnumGenre.FEMME, EnumStatut.VILLAGEOIS);
+			  Gaulois ielosubmarine = new Gaulois("Iélosubmarine", new Date(1, 10,
+			    1985), EnumGenre.FEMME, EnumStatut.VILLAGEOIS);
+			  
+			  Village vill = new Village(abraracourcix,asterix);
+			  vill.addGaulois(obelix);
+			  vill.addGaulois(bonemine);
+			  vill.addGaulois(panoramix);
+			  vill.addGaulois(assurancetourix);
+			  vill.addGaulois(agecanonix);
+			  vill.addGaulois(ordralfabetix);
+			  vill.addGaulois(falbala);
+			  vill.addGaulois(ielosubmarine);
+			  NavigableSet<Gaulois> ns = vill.getGauloisAge();
+				
+
+
+			  
+
+	}
+	
+
+}
