@@ -1,0 +1,9 @@
+package nourriture;
+
+public class Hamburger {
+
+	public Hamburger() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

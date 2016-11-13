@@ -1,0 +1,13 @@
+package gestionDeMenu;
+
+public class IHMGestionAjoutCarte {
+	
+	private GestionRestaurant gestionRestaurant;
+	
+	public IHMGestionAjoutCarte(GestionRestaurant gestionRestaurant) {
+	}
+	
+	public void ajoutCarte(){
+		Carte c = new Carte();
+	}
+}

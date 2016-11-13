@@ -1,0 +1,15 @@
+package gestionDeMenu;
+import java.util.ArrayList;
+import java.util.List;
+
+import nourriture.Hamburger;
+
+
+public class Carte {
+	List<Hamburger> listeHamburger = new ArrayList<Hamburger>();
+	List<Boisson> listeBoisson = new ArrayList<Boisson>();
+	List<Accompagnement> listeAccompagnement = new ArrayList<Accompagnement>();
+
+
+
+}

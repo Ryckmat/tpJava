@@ -1,0 +1,34 @@
+package gestionDeMenu;
+
+import java.util.Scanner;
+
+public class IHMGestionAjoutCarte {
+	
+	private GestionRestaurant gestionRestaurant;
+	
+	public IHMGestionAjoutCarte(GestionRestaurant gestionRestaurant) {
+	}
+	
+	public void ajoutCarte(){
+		Carte c = new Carte();
+	}
+	
+	private int choixAliment(){
+		int c =0;
+		do{
+			System.out.println("Choisissez votre aliment 1: Hamburger 2:Boisson 3:Accompagnment");
+			Scanner sc = new Scanner(System.in);
+			c = sc.nextInt();
+		}while(c < 0 || c>4);
+		return c;
+		
+	}
+	
+	private String saisirNomAliment(String typeAliment){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Veuillez saisir un aliment :");
+		String str = sc.nextLine();
+		System.out.println("Vous avez saisi : " + str);
+		return str;
+	}
+}

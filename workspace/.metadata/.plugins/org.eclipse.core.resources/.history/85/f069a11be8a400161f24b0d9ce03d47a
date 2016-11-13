@@ -1,0 +1,8 @@
+package nourriture;
+
+public class Hamburger {
+
+	public Hamburger(String nom) {
+	}
+
+}

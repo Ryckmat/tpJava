@@ -1,0 +1,13 @@
+package gestionDeMenu;
+
+import nourriture.Hamburger;
+
+public class GestionRestaurant {
+	
+	private Carte carte;
+	
+	public void ajouterHamburger(String nom){
+		Hamburger h = new Hamburger(nom);
+		carte.ajouterHamburger(h);
+	}
+}

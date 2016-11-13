@@ -1,0 +1,9 @@
+package gestionDeMenu;
+
+public class IHMGestionAjoutCarte {
+
+	public IHMGestionAjoutCarte() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

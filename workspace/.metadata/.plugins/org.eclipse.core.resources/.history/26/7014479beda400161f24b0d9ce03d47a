@@ -1,0 +1,9 @@
+package gestionDeMenu;
+
+public class GestionRestaurant {
+
+	public GestionRestaurant() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

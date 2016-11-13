@@ -1,0 +1,26 @@
+package gestionDeMenu;
+import java.util.ArrayList;
+import java.util.List;
+
+import nourriture.Accompagnement;
+import nourriture.Boisson;
+import nourriture.Hamburger;
+
+
+public class Carte {
+	List<Hamburger> listeHamburger = new ArrayList<Hamburger>();
+	List<Boisson> listeBoisson = new ArrayList<Boisson>();
+	List<Accompagnement> listeAccompagnement = new ArrayList<Accompagnement>();
+	
+	public void ajouterHamburger(Hamburger h){
+		listeHamburger.add(h);
+	}
+	public void ajouterAccompagnement(Accompagnement a){
+		listeAccompagnement.add(a);
+	}
+	public void ajouterBoisson(Boisson b){
+		listeBoisson.add(b);
+	}
+
+
+}
